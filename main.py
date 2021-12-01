@@ -15,7 +15,7 @@ def main():
     RPC = Presence(client_id=client_id)
     RPC.connect()
 
-    with open('./options.json', 'r') as j:
+    with open('./options.json', 'r', encoding='utf-8') as j:
         options = json.load(j)
 
     # Make sure you are using the same name that you used when uploading the image
