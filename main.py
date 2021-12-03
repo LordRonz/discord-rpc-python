@@ -5,8 +5,8 @@ https://discordapp.com/developers/applications/<APP ID>/rich-presence/assets
 
 from pypresence import Presence
 import time
-import json
 from read_env import read_env
+from options import get_options
 import os
 
 def main():
@@ -15,13 +15,10 @@ def main():
     RPC = Presence(client_id=client_id)
     RPC.connect()
 
-    with open('./options.json', 'r', encoding='utf-8') as j:
-        options = json.load(j)
-
     # Make sure you are using the same name that you used when uploading the image
-    RPC.update(**options)
 
     while True:
+        RPC.update(**get_options())
         time.sleep(15) #Can only update presence every 15 seconds
 
 if __name__ == '__main__':
